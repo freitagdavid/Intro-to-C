@@ -54,13 +54,14 @@ char *find_string(char *haystack, char *needle) {
     return NULL;
   }
   char *match = NULL;
-  while (*haystack) {
+
+  while (*haystack != '\0') {
+
     if (*haystack == *needle) {
       match = haystack;
+
+      char *origNeedle = needle;
       while (*needle) {
-
-        char *origNeedle = needle;
-
         if (*haystack != *needle) {
           match = NULL;
           needle = origNeedle;
@@ -77,11 +78,8 @@ char *find_string(char *haystack, char *needle) {
     }
 
     haystack++;
-
-    if (*haystack == '\0') {
-      break;
-    }
   }
+  return NULL;
 }
 
 #ifndef TESTING
