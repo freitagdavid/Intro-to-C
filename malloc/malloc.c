@@ -54,7 +54,7 @@ void *resize_memory(void *ptr, int old_size, int new_size) {
   } else {
     mem_copy(new_alloc, ptr, new_size);
   }
-  ptr = new_alloc;
+  return new_alloc;
 }
 
 #ifndef TESTING
@@ -95,7 +95,8 @@ int main(void) {
   }
 
   printf("Full path string: %s\n", new_url);
-
+  char *new_new_url = resize_memory(new_url, new_length, 8);
+  printf("Truncated path string: %s\n", new_new_url);
   return 0;
 }
 #endif
